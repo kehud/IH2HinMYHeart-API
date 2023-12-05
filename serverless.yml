@@ -1,0 +1,20 @@
+service: service-360securitybackend
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  memorySize: 2048
+  stage: dev
+  stage: /
+  timeout: 15
+  region: ap-south-1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http: ANY /{proxy+}
+      - http: ANY /
+#    environment:
+#      variable2: value2
